@@ -19,8 +19,9 @@ defmodule Valve.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Valve do
-  #   pipe_through :api
-  # end
+  scope "/api", Valve do
+   pipe_through :api
+
+   get "/source", SourceController, :source
+  end
 end
