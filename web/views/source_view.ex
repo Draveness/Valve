@@ -1,10 +1,13 @@
 defmodule Valve.SourceView do
   use Valve.Web, :view
 
-  def render("source.json", %{version: version, name: name}) do
+  def render("source.json", %{json: json}) do
+    Poison.Parser.parse! json
+  end
+
+  def render("error.json", %{reason: error}) do
     %{
-      version: version,
-      name: name
+      error: error
     }
   end
 end
